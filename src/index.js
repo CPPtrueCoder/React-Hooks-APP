@@ -1,11 +1,35 @@
-import React from "react";
+import React,{useState} from "react";
+
 import ReactDOM from 'react-dom'
 
-const App = ()=>{
-	return(
-<h1> Hello world!</h1>
-	);
+const App = () => {
+	return (
+		<div>
+			<h1> Hello world!</h1>
+			<HookSwitcher/>
+			
+		</div>
+	
+	
+)
+	;
 	
 };
 
-ReactDOM.render(<App/> , document.getElementById('root'));
+const HookSwitcher = () => {
+	
+	const [color,setColor] = useState('black');
+	const [fontSize,setFontSize]=useState(14);
+	return (
+		<div style={{padding: '10px', backgroundColor: color, fontSize:`${fontSize}px`}}>
+			Hello world
+			<button onClick={() => {setColor('black')}}> Dark</button>
+			<button onClick={() => {setColor('white')}}> Light</button>
+			<button onClick={() => {setFontSize((s)=>s+2)}}>+</button>
+			<button onClick={() => {setFontSize((s)=>s-2)}}>-</button>
+		
+		</div>
+	);
+};
+
+ReactDOM.render (<App/>, document.getElementById ('root'));
